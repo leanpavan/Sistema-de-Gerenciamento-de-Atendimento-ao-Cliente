@@ -6,4 +6,22 @@ public class Node {
         this.dados = dados;
         this.proximo = null;
     }
+
+    public Elemento obterDados() {
+        return dados;
+    }
+
+    public Node obterProximo() {
+        return proximo;
+    }
+
+    public void definirProxio(Node proximo) {
+        this.proximo = proximo;
+    }
+
+    public void imprimir() {
+        dados.imprimirElemento();
+    }
+
+
 }
