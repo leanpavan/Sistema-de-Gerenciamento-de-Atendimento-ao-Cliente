@@ -1,4 +1,9 @@
 public class Node {
-    private String dado;
+    private Elemento dados;
     private Node proximo;
+
+    public Node(Elemento dados) {
+        this.dados = dados;
+        this.proximo = null;
+    }
 }
