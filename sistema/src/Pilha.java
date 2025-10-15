@@ -8,7 +8,7 @@ public class Pilha {
 
     public void inserir(Elemento elemento) {
         Node noElemento = new Node(elemento);
-        noElemento.definirProxio(topo);
+        noElemento.definirProximo(topo);
         topo = noElemento;
         System.out.println("Solicitação adicionada ao histórico\n");
     }

@@ -15,7 +15,7 @@ public class Node {
         return proximo;
     }
 
-    public void definirProxio(Node proximo) {
+    public void definirProximo(Node proximo) {
         this.proximo = proximo;
     }
 
