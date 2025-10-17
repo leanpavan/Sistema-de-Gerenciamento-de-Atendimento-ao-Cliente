@@ -25,7 +25,7 @@ public class Fila {
         System.out.println("Elemento adicionado a fila com sucesso.\n");
     }
 
-    public Elemento atenderProximo() {
+    public Elemento atenderProximo() { // Remover elemento da fila
         if (vazia()) {
             System.out.println("Não foi possível atender o próximo elemento da lista, pois ela está vazia");
             return null;
@@ -37,5 +37,22 @@ public class Fila {
             tras = null;
         }
         return elementoAtendido;
+    }
+
+    public void visualizarOrdemAtendimento() {
+        if (vazia()) {
+            System.out.println("Não foi possível visualizar a ordem de atendimento, pois a fila está vazia\n");
+        }
+
+        System.out.println("ORDEM DE ATENDIMENTO\n");
+        Node noAtual = frente;
+        int indice = 1;
+
+        while (noAtual != null) {
+            System.out.printf("Posição: %s", noAtual.obterDados());
+            noAtual = noAtual.obterProximo();
+            indice++;
+            System.out.println("-----------------------------------\n");
+        }
     }
 }

@@ -27,11 +27,11 @@ public class Elemento {
     public void imprimirElemento() {
         // Se nome não for nulo quer dizer que é um cliente
         if (nome != null) {
-            System.out.printf("Elemento Cliente: Nome= %s , NumeroIdentificacao= %d , MotivoAtendimento= %s",
+            System.out.printf("Elemento Cliente: Nome= %s , NumeroIdentificacao= %d , MotivoAtendimento= %s\n",
                     nome, numeroIdentificacao, motivoAtendimento);
         }
         else {
-            System.out.printf("Elemento Solicitacao: ID= %s , Descricao= %s , DataHora= %s",
+            System.out.printf("Elemento Solicitacao: ID= %s , Descricao= %s , DataHora= %s\n",
                     id, descricao, dataHora);
         }
     }

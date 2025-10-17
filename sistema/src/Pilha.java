@@ -38,5 +38,6 @@ public class Pilha {
             noAtual = noAtual.obterProximo();
         }
         System.out.println("-----------------------------------\n");
+
     }
 }

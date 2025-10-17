@@ -14,6 +14,11 @@ public class SistemaAtendimento {
                 new Elemento("CLI010", "Carlos Eduardo", "Pedido de orçamento")
         };
 
+        Fila fila = new Fila();
+        for(int i=0; i<10; i++) {
+            fila.inserir(filaAtendimento[i]);
+        }
+
         // Inicialização de histórico de solicitações
         Elemento[] historico = new Elemento[]{
                 new Elemento("REQ001", "Instalação de software", "2024-08-20 10:30"),
@@ -28,7 +33,8 @@ public class SistemaAtendimento {
                 new Elemento("REQ010", "Consulta técnica", "2024-08-20 15:00")
         };
 
-
+        System.out.println("Bem-vindo ao Sistema de Gerenciamento de Atendimento ao Cliente!\n");
+        fila.visualizarOrdemAtendimento();
 
     }
 }
