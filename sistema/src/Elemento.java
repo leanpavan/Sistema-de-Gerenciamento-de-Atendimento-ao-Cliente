@@ -1,4 +1,3 @@
-// Classe para representar uma solicitação ou um cliente
 public class Elemento {
     // Solicitação
     String id;
@@ -6,28 +5,37 @@ public class Elemento {
     String dataHora;
 
     // Cliente
+    String numeroIdentificacao;
     String nome;
-    int numeroIdentificacao;
     String motivoAtendimento;
 
     // Construtor para elemento solicitação
-    public Elemento(String id, String descricao, String dataHora) {
-        this.id = id;
-        this.descricao = descricao;
-        this.dataHora = dataHora;
+    public Elemento(String id, String descricao_nome, String dataHora_motivoAtendimento) {
+        // analisar id
+        String identificacao = id.substring(0, 3);
+        if (identificacao.equals("CLI")) {
+            this.numeroIdentificacao = id;
+            this.nome = descricao_nome;
+            this.motivoAtendimento = dataHora_motivoAtendimento;
+        } else {
+            this.id = id;
+            this.descricao = descricao_nome;
+            this.dataHora = dataHora_motivoAtendimento;
+        }
     }
 
-    // Construtor para elemento cliente
-    public Elemento(String nome, int numeroIdentificacao, String motivoAtendimento) {
-        this.nome = nome;
-        this.numeroIdentificacao = numeroIdentificacao;
-        this.motivoAtendimento = motivoAtendimento;
+    public String obterIdAtendimento() {
+        return this.numeroIdentificacao;
+    }
+
+    public String obterIdSolicitacao() {
+        return this.id;
     }
 
     public void imprimirElemento() {
         // Se nome não for nulo quer dizer que é um cliente
         if (nome != null) {
-            System.out.printf("Elemento Cliente: Nome= %s , NumeroIdentificacao= %d , MotivoAtendimento= %s\n",
+            System.out.printf("Elemento Cliente: Nome= %s , NumeroIdentificacao= %s , MotivoAtendimento= %s\n",
                     nome, numeroIdentificacao, motivoAtendimento);
         }
         else {

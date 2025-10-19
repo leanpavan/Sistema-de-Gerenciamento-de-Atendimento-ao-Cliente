@@ -1,4 +1,3 @@
-// Classe para representar uma fila usando lista encadeada
 public class Fila {
     private Node frente;
     private Node tras;
@@ -13,6 +12,10 @@ public class Fila {
         return true;
     }
 
+    public Node obterTras(){
+        return this.tras;
+    }
+
     public void inserir(Elemento elemento) {
         Node novoNo = new Node(elemento);
         if (vazia()) {
@@ -22,7 +25,7 @@ public class Fila {
             tras.definirProximo(novoNo);
             tras = novoNo;
         }
-        System.out.println("Elemento adicionado a fila com sucesso.\n");
+        //System.out.println("Elemento adicionado a fila com sucesso.\n");
     }
 
     public Elemento atenderProximo() { // Remover elemento da fila
@@ -44,15 +47,14 @@ public class Fila {
             System.out.println("Não foi possível visualizar a ordem de atendimento, pois a fila está vazia\n");
         }
 
-        System.out.println("ORDEM DE ATENDIMENTO\n");
+        System.out.println("\nORDEM DE ATENDIMENTO:");
         Node noAtual = frente;
         int indice = 1;
 
         while (noAtual != null) {
-            System.out.printf("Posição: %s", noAtual.obterDados());
+            noAtual.obterDados().imprimirElemento();
             noAtual = noAtual.obterProximo();
             indice++;
-            System.out.println("-----------------------------------\n");
         }
     }
 }

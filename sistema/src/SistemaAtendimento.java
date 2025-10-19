@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class SistemaAtendimento {
     public static void main(String[] args) {
         // Inicialização de fila de atendimento de clientes
@@ -14,6 +16,7 @@ public class SistemaAtendimento {
                 new Elemento("CLI010", "Carlos Eduardo", "Pedido de orçamento")
         };
 
+        // inserção de dados na fila
         Fila fila = new Fila();
         for(int i=0; i<10; i++) {
             fila.inserir(filaAtendimento[i]);
@@ -33,8 +36,100 @@ public class SistemaAtendimento {
                 new Elemento("REQ010", "Consulta técnica", "2024-08-20 15:00")
         };
 
-        System.out.println("Bem-vindo ao Sistema de Gerenciamento de Atendimento ao Cliente!\n");
-        fila.visualizarOrdemAtendimento();
+        // inserção de dados na pilha
+        Pilha pilha = new Pilha();
+        for (int i=0; i<10; i++) {
+            pilha.inserir(historico[i]);
+        }
+
+        System.out.println("Bem-vindo ao Sistema de Gerenciamento de Atendimento ao Cliente!");
+
+        boolean execucao = true;
+        Scanner teclado = new Scanner(System.in);
+
+        do {
+            System.out.println("\n---------------------------------------------------------------------");
+            System.out.println("Menu de Operações:");
+            System.out.println("1. Inserir atendimento de cliente na fila");
+            System.out.println("2. Inserir solicitação na pilha");
+            System.out.println("3. Exibir atendimentos de clientes");
+            System.out.println("4. Exibir histórico de solicitações");
+            System.out.println("5. Atender proximo cliente");
+            System.out.println("6. Remover ultima sólicitação do histórico");
+            System.out.println("7. Sair");
+            System.out.println("---------------------------------------------------------------------");
+            System.out.println("Escolha a operação: ");
+
+
+            int escolha = teclado.nextInt();
+            teclado.nextLine();
+
+            switch (escolha) {
+
+                case 1:
+                    System.out.print("Digite o nome do cliente: ");
+                    String nome = teclado.nextLine();
+
+                    String idAnteriorAtendimento = fila.obterTras().obterDados().obterIdAtendimento();
+
+                    System.out.print("Digite o ID (Último id: "+idAnteriorAtendimento+"): ");
+                    String idAtendimento = teclado.nextLine();
+
+                    System.out.print("Motivo de Atendimento: ");
+                    String motivoAtendimento = teclado.nextLine();
+
+                    System.out.println("Adicionando atendimento...");
+                    fila.inserir(new Elemento(idAtendimento, nome, motivoAtendimento));
+                    System.out.println("Atendimento de "+ nome +" adicionado");
+                    break;
+
+                case 2:
+
+                    String idAnteriorSolicitacao = pilha.obterTopo().obterDados().obterIdSolicitacao();
+
+                    System.out.print("Digite o ID (Último id:"+idAnteriorSolicitacao+"): ");
+                    String idSolicitacao = teclado.nextLine();
+
+                    System.out.print("Digite a descrição da solicitação: ");
+                    String descricao = teclado.nextLine();
+
+                    System.out.print("Digite a data e horario (Ex.: 2024-08-20 10:30): ");
+                    String data = teclado.nextLine();
+
+                    System.out.println("Adicionando solicitação no histórico...");
+                    pilha.inserir(new Elemento(idSolicitacao, descricao, data));
+                    System.out.println("Solicitação adicionada");
+                    break;
+
+                case 3:
+                    fila.visualizarOrdemAtendimento();
+                    break;
+
+                case 4:
+                    pilha.visualizarHistorico();
+                    break;
+
+                case 5:
+                    System.out.println("\nAtendendo cliente...");
+                    Elemento proximo = fila.atenderProximo();
+                    System.out.println("Atendimento de " + proximo.nome + " finalizado.");
+                    break;
+
+                case 6:
+                    System.out.println("\nRemovendo último elemento do histórico");
+                    Elemento remover = pilha.remover();
+                    System.out.println("Histórico removido: " + remover.id);
+                    break;
+
+                case 7:
+                    System.out.println("\nEncerrando programa...");
+                    teclado.close();
+                    execucao = false;
+                    break;
+            }
+
+        } while (execucao);
+
 
     }
 }

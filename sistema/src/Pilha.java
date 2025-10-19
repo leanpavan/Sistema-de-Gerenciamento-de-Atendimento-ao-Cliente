@@ -1,4 +1,3 @@
-// Classe para representar uma pilha usando lista encadeada
 public class Pilha {
     private Node topo;
 
@@ -6,11 +5,15 @@ public class Pilha {
         this.topo = null;
     }
 
+    public Node obterTopo() {
+        return this.topo;
+    }
+
     public void inserir(Elemento elemento) {
         Node noElemento = new Node(elemento);
         noElemento.definirProximo(topo);
         topo = noElemento;
-        System.out.println("Solicitação adicionada ao histórico\n");
+        //System.out.println("Solicitação adicionada ao histórico\n");
     }
 
     public Elemento remover() {
@@ -31,13 +34,11 @@ public class Pilha {
         if (vazia()) {
             System.out.println("Não foi possível visualizar o histórico, pois a pilha está vazia\n");
         }
-        System.out.println("HISTÓRICO DE SOLICITAÇÕES\n");
+        System.out.println("\nHISTÓRICO DE SOLICITAÇÕES:");
         Node noAtual = topo;
         while (noAtual != null) {
             noAtual.imprimir();
             noAtual = noAtual.obterProximo();
         }
-        System.out.println("-----------------------------------\n");
-
     }
 }

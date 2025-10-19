@@ -22,6 +22,4 @@ public class Node {
     public void imprimir() {
         dados.imprimirElemento();
     }
-
-
 }
